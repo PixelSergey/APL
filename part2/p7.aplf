@@ -1,0 +1,3 @@
+ ∇ r←variant Base85 data
+    r←'RESULT'
+∇
