@@ -1,0 +1,7 @@
+#!/usr/bin/dyalogscript
+
+p1←{+/'ACGT'∘.=(≢⍵)⍴⍵}
+
+⎕← p1 'AGCTTTTCATTCTGACTGCAACGGGCAATATGTCTCTGTGTGGATTAAAAAAAGAGTGTCTGATAGCAGC'
+⎕← p1 ''
+⎕← p1 'G'
