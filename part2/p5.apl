@@ -22,8 +22,8 @@ Z85←'0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ.-:+=^!/*?&
 
 ∇ res ← variant Base85Encode data; padded
   padded←(4×⌈(÷4)×⍴data)↑data              ⍝ Pad the data with 0s to a length divisible by 4
-  base10←255⊥¨((⍴padded)⍴1 0 0 0)⊂padded   ⍝ Decode groups of 4 from base 255 to base 10
-  base85←,↑(5⍴¨85)⊤¨base10                ⍝ Encode to base 85, taking 5 digits of output
+  base10←256⊥¨((⍴padded)⍴1 0 0 0)⊂padded   ⍝ Decode groups of 4 from base 256 to base 10
+  base85←,↑(5⍴¨85)⊤¨base10                 ⍝ Encode to base 85, taking 5 digits of output
   res←variant[1+base85]                    ⍝ Map the base 85 numbers to Base85 characters
 ∇
 
@@ -42,3 +42,9 @@ Z85←'0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ.-:+=^!/*?&
 ⍝⎕← 'Hello World' ≡ ⎕UCS Z85 Base85 Z85 Base85 ⎕UCS 'Hello World'
 ⍝⎕← Z85 (Base85⍣2 ≡ ⊢) ⎕UCS 'Hello'
 ⍝⎕← ⎕UCS Original Base85 '7!W 3WD ⍴ eC1 ⌈ Y:eU'
+
+⍝    8   7   c   U   R
+⍝    24  23  67  53  50
+⍝    
+⍝    7   u   _   g   8
+⍝    23  85  63  71  24
