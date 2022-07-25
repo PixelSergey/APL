@@ -4,7 +4,7 @@
 ⍝ GLOBAL VARIABLES
 ⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝
 
-⎕←Original←⎕UCS 32+⍳85
+Original←⎕UCS 32+⍳85
 Z85←'0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ.-:+=^!/*?&<>()[]{}@%$#'
 
 ⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝
@@ -20,7 +20,7 @@ Z85←'0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ.-:+=^!/*?&
   :Endif
 ∇
 
-∇ res ← variant Base85Encode data; padded; base10; base85
+∇ res ← variant Base85Encode data; padding; padded; base10; base85
   padding←(4×⌈(÷4)×⍴data)                  ⍝ Calculate total padded size
   padded←padding↑data                      ⍝ Pad the data with 0s to a length divisible by 4
   base10←256⊥¨((⍴padded)⍴1 0 0 0)⊂padded   ⍝ Decode groups of 4 from base 256 to base 10
@@ -28,7 +28,7 @@ Z85←'0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ.-:+=^!/*?&
   res←((⍴data)-padding)↓variant[1+base85]  ⍝ Map the base 85 numbers to Base85 characters, dropping extras
 ∇
 
-∇ res ← variant Base85Decode data
+∇ res ← variant Base85Decode data; padding; padded; base85; base10
   padding←(5|5-5|⍴data)                    ⍝ Calculate amount of padding required (different from Base85Encode logic)
   padded←data,padding⍴¯1↑variant           ⍝ Pad the data with the last element of the charset to a length divisible by 5
   base85←¯1+variant⍳padded                 ⍝ Map the Base85 characters to base 85 numbers
