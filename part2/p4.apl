@@ -1,5 +1,7 @@
 #!/usr/bin/dyalogscript
 
+⍝ PLEASE SET MAX WORKSPACE SIZE TO 4GB OR MORE FOR THE FINAL TEST
+
 ⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝
 ⍝ SOLUTION: PART 1
 ⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝
@@ -27,14 +29,17 @@
   
   ⍝ Generate table of rankings
   unique←∪shuffled
-  res←↑[1](+/unique∘.≡shuffled)(unique)
+  ⍝ This line requires a large WS size. A more space-efficient but very slow solution is
+  ⍝ unique∘.{+/(⊂⍺)≡¨⍵}⊂shuffled
+  totals←(+/unique∘.≡shuffled)
+  res←↑[1](totals)(unique)
 ∇
 
 ⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝
 ⍝ SOLUTION: PART 2
 ⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝
 
-∇ res←IRV ballot
+∇ res←IRV ballot; votes; table; voters; max; eliminated
   ⍝ Tally the primary votes per candidate
   votes←⊃+/ballot[;1]×1=ballot[;2]
 
@@ -84,4 +89,4 @@ b2←↑[1](10 11 10 9 13 14 12 16 21 6 6 8 6 4 4)((1 2 3)(2 1 0)(2 1 3)(1 3 2)(
 ⎕← IRV b2
 ⎕← b3←300 200 100 50 50 100,⍪↓6 4⍴1 0 2 0 0 1 0 2 2 0 0 1 0 2 1 0 0 2 0 1 3 2 1 0
 ⎕← IRV b3
-⎕← IRV ¯10 Ballot 200000
+⎕← IRV ¯10 Ballot 200000  ⍝ REQUIRES LARGE MAX WORKSPACE SIZE (WORKS WITH 4GB)
