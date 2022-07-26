@@ -4,8 +4,8 @@
 ⍝ GLOBAL VARIABLES
 ⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝
 
-attendees←⊃⎕CSV 'Attendees.csv' '' ⍬ 1
-schedule←⊃⎕CSV 'Schedule.csv' '' ⍬ 1
+attendees←⊃⎕CSV 'p3data/Attendees.csv' '' ⍬ 1
+schedule←⊃⎕CSV 'p3data/Schedule.csv' '' ⍬ 1
 
 ⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝
 ⍝ SOLUTION: PART 1
@@ -24,7 +24,7 @@ schedule←⊃⎕CSV 'Schedule.csv' '' ⍬ 1
 ∇
 
 ⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝
-⍝ SOLUTION: PART 2
+⍝ SOLUTION: PART 3
 ⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝⍝
 
 ∇ res←map Popular schedule
