@@ -1,6 +1,6 @@
-# APL Problem Solving Competition 2022
+# APL Problem Solving Competition
 
-My submissions for the [APL Problem Solving Competition](https://contest.dyalog.com/) 2022.
+My submissions for the yearly [APL Problem Solving Competition](https://contest.dyalog.com/).
 Developed using Dyalog APL.
 
 ## Installation and execution
